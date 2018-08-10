@@ -113,8 +113,15 @@ Sheets(2).Select
     Range(Selection, Selection.End(xlDown)).Select
     a = Selection.Rows.Count
     
+    Range(Cells(2, 7), Cells(a, 7)).Select
+    Selection.Copy
+    
+    Range(Cells(2, 10), cels(a, 10)).Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    
     Cells(a, 11).Select
-    ActiveCell.FormulaR1C1 = "=R[-1]C+RC[-4]"
+    ActiveCell.FormulaR1C1 = "=R[-1]C+RC[-1]"
     Selection.Copy
 
     Range(Cells(a - 1, 11), Cells(3, 11)).Select
